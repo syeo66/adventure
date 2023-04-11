@@ -25,5 +25,5 @@ cargo run
 The game will start and prompt you to enter text into the console. The game master will respond to your input with descriptions of the game world and guidance on what to do next.
 
 ## License
-This project is licensed under the [MIT License](https://chat.openai.com/LICENSE).
+This project is licensed under the [MIT License](LICENSE).
 
