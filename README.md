@@ -1,4 +1,4 @@
-# Rust Adventure Game with OpenAI GPT-3.5
+# An Adventure Game with OpenAI GPT-3.5
 
 This is a simple Rust project that demonstrates the use of the OpenAI GPT-3.5 API to create an adventure game that a user can play by typing text into the console. The game master will guide the user through a map.
 
