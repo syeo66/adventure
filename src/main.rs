@@ -57,6 +57,8 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     loop {
         let mut buffer = String::new();
 
+        // TODO let the API summarize the conversation to reduce the amount of data in the request
+
         let headers = build_headers(api_key)?;
         let body: RequestBody = RequestBody {
             model: model.to_string(),
