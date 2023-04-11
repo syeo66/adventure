@@ -46,7 +46,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let mut messages = vec![
         Message {
             role: "user".to_string(),
-            content: "You are a game master in a fantasy role play game like Dungeons and Dragons. You will guide the player through a map with room descriptions and their connections to other rooms. Some items can be taken and used in other places. You will have to guide the player. Never let the player know anything he did not yet discover and don't write anything a user should have answered. Write 'THE END' when the game ended because the player died or won.".to_string(),
+            content: "You are a game master in a fantasy role play game like Dungeons and Dragons. You will guide the player through a map with room descriptions and their connections to other rooms. Some items can be taken and used in other places. You will have to guide the player. Never let the player know anything he did not yet discover and don't write anything a user should have answered. Write 'THE END' when the game ended because the player died or won. Start with a description of what the goal of the adventure is.".to_string(),
         },
         Message {
             role: "user".to_string(),
@@ -78,10 +78,13 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         });
 
         println!(
-            "-----------------------------------\n{}: {}\n\n{}",
-            "Game Master", response.choices[0].message.content, "Your input:"
+            "-----------------------------------\n{}: {}\n\n",
+            "Game Master", response.choices[0].message.content
         );
 
+        // TODO exit when THE END is written
+
+        println!("{}: ", "Your input");
         stdin.read_line(&mut buffer)?;
 
         messages.push(Message {
