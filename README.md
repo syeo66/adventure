@@ -8,7 +8,6 @@ To use this project, you will need an OpenAI API key. You can sign up for an API
 Once you have an API key, you will need to create a configuration file at `~/.adventure.ini` with the following contents:
 
 ```ini
-[DEFAULT]
 OPENAI_API_KEY = <your-api-key>
 ```
 
