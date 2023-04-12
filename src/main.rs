@@ -57,7 +57,8 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     loop {
         let mut buffer = String::new();
 
-        // TODO let the API summarize the conversation to reduce the amount of data in the request
+        // TODO let the API summarize the conversation to reduce the amount of
+        // data in the request after a certain amount of tokens used
 
         let headers = build_headers(api_key)?;
         let body: RequestBody = RequestBody {
@@ -84,7 +85,9 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             "Game Master", response.choices[0].message.content
         );
 
-        // TODO exit when THE END is written
+        if response.choices[0].message.content.contains("THE END") {
+            break Ok(());
+        }
 
         println!("{}: ", "Your input");
         stdin.read_line(&mut buffer)?;
