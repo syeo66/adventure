@@ -1,4 +1,4 @@
-# An Adventure Game usin OpenAIs API
+# An Adventure Game using OpenAIs API
 
 This is a simple Rust project that demonstrates the use of the OpenAIs API to create an adventure game that a user can play by typing text into the console. The game master will guide the user through a map.
 
