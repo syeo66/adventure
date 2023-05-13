@@ -1,3 +1,4 @@
+use clap::Parser;
 use config::{Config, File};
 use reqwest::header::{HeaderMap, HeaderValue, AUTHORIZATION};
 use serde::{Deserialize, Serialize};
@@ -32,13 +33,22 @@ struct RequestBody {
     max_tokens: i64,
 }
 
+#[derive(Parser, Debug)]
+#[command(author, version, about, long_about = None)]
+struct Args {
+    /// Use gpt-4 instead of gpt-3.5-turbo (will be more expensive and slower, but might lead to a better stories)
+    #[arg(long)]
+    gpt4: bool,
+}
+
 fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let args = Args::parse();
+
     let openai_api_key = get_openai_api_key();
 
     let api_key = &openai_api_key;
     let prompt = "Hello game master. I am ready. Let's start.";
-    let model = "gpt-3.5-turbo";
-    // let model = "gpt-4";
+    let model = if args.gpt4 { "gpt-4" } else { "gpt-3.5-turbo" };
     let url = "https://api.openai.com/v1/chat/completions";
 
     let stdin = std::io::stdin();
