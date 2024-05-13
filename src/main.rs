@@ -65,7 +65,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let model = match args.model {
         Model::Gpt3 => "gpt-3.5-turbo",
-        Model::Gpt4 => "gpt-4",
+        Model::Gpt4 => "gpt-4o",
         Model::Claude3 => "claude-3-sonnet-20240229",
     };
 
@@ -74,7 +74,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let mut messages = vec![
         Message {
             role: "user".to_string(),
-            content: "You are a game master in a fantasy role play game like Dungeons and Dragons. You will guide the player through a map with room descriptions and their connections to other rooms. Some items can be taken and used in other places. You will have to guide the player. Never let the player know anything he did not yet discover and don't write anything a user should have answered. Write 'THE END' when the game ended because the player died, exits the game or won. Really just write 'THE END' in any case the game has ended. Don't forget the THE END. Start with a description of what the goal of the adventure is. Hello game master. I am ready. Let's start.".to_string(),
+            content: "You are a game master in a fantasy role play game like Dungeons and Dragons. You will guide the player through a map with room descriptions and their connections to other rooms. Let the adventurer inspect at least five rooms during the adventure but only present them as the the adventure progresses. Some items can be taken and used in other places. You will have to guide the player. Never let the player know anything he did not yet discover and don't write anything a user should have answered. Write 'THE END' when the game ended because the player died, exits the game or won. Really just write 'THE END' in any case the game has ended. Don't forget the THE END. Start with a description of what the goal of the adventure is. Hello game master. I am ready. Let's start.".to_string(),
         },
     ];
 
@@ -84,7 +84,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         let body: RequestBody = RequestBody {
             model: model.to_string(),
             messages: messages.clone(),
-            max_tokens: 200,
+            max_tokens: 500,
         };
 
         let response = if args.model == Model::Claude3 {
