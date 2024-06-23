@@ -66,7 +66,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let model = match args.model {
         Model::Gpt3 => "gpt-3.5-turbo",
         Model::Gpt4 => "gpt-4o",
-        Model::Claude3 => "claude-3-sonnet-20240229",
+        Model::Claude3 => "claude-3-5-sonnet-20240620",
     };
 
     let stdin = std::io::stdin();
